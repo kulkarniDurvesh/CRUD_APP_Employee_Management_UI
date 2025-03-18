@@ -1,0 +1,451 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-success">
+                <h2 *ngIf="currentStep==1">Employee Form</h2>
+                <h2 *ngIf="currentStep==2">Employee Skills</h2>
+                <h2 *ngIf="currentStep==3">Employee Skills</h2>
+            </div>
+            <div class="card-body">
+                <form action="" [formGroup]="employeeForm">
+                    <div class="row" *ngIf="currentStep==1">
+                        <div class="col-6">
+                            <label for="UserName">UserName</label>
+                            <input type="text" name="userName" id="userName" class="form-control"formControlName="userName">
+                            <div>
+                                <span style="color: red;" *ngIf="employeeForm.get('userName')?.hasError('required') && (employeeForm.get('userName')?.touched )">
+                                    <i>Name field is required</i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label for="empCode">Employee Code</label>
+                            <input type="text" name="empCode" id="empCode" class="form-control" formControlName="empCode">
+                            <div>
+                                <span style="color: red;" *ngIf="employeeForm.get('empCode')?.hasError('required') && (employeeForm.get('empCode')?.touched)">
+                                    <i>Employee Code is required</i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label for="empName">Employee Name</label>
+                            <input type="text" name="empName" id="empName" class="form-control" formControlName="empName">
+                            <div>
+                                <span style="color: red;" *ngIf="employeeForm.get('empName')?.hasError('required') && employeeForm.get('empName')?.touched">
+                                    <i>Employee Name is required</i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label for="empId">EmpId</label>
+                            <input type="number" name="empId" id="empId" class="form-control" formControlName="empId">
+                            <div>
+                                <span style="color: red;" *ngIf="employeeForm.get('empId')?.hasError('required') && employeeForm.get('empId')?.touched">
+                                    <i>Employee Id is required</i>
+                                </span>
+                            </div>
+                        </div>
+                        <!-- <div class="col-6">
+                            <label for="roleId">Roles</label>
+                            <select name="roleId" id="roleId" class="form-control" formControlName="roleId">
+                                <option value="">Select</option>
+                                <option *ngFor="let item of roleList" value={{item.roleId}}>{{item.role}}</option>
+                            </select>
+                            <div>
+                            <span style="color: red;" *ngIf="employeeForm.get('roleId')?.hasError('required') && employeeForm.get('roleId')?.touched">
+                                <i>Employee Code is required</i>
+                            </span>
+                            </div>
+                        </div> -->
+                        <div class="col-6">
+                            <label for="empEmailId">Email Id</label>
+                            <input type="email" name="empEmailId" id="empEmailId" class="form-control" formControlName="empEmailId">
+                            <div>
+                                <span style="color: red;" *ngIf="employeeForm.get('empEmailId')?.hasError('required') && employeeForm.get('empEmailId')?.touched">
+                                    <i>Employee Id is required</i>
+                                </span>
+                            </div>
+                        </div>
+                        <!-- <div class="col-6">
+                            <label for="empDesignationId">Designation</label>
+                            <select name="empDesignationId" id="empDesignationId" class="form-control" formControlName="empDesignationId">
+                                <option value="">Select</option>
+                                <option *ngFor="let item of designationList" value={{item.designationId}}>{{item.designation}}</option>
+                            </select>
+                            <div>
+                                <span style="color: red;" *ngIf="employeeForm.get('empDesignationId')?.hasError('required') && employeeForm.get('empDesignationId')?.touched">
+                                    <i>Designation is required</i>
+                                </span>
+                            </div>
+                        </div> -->
+                        <div class="col-6">
+                            <label for="empContactNo">Contact No</label>
+                            <input type="text" name="empContactNo" id="empContactNo" class="form-control" formControlName="empContactNo">
+                            <div>
+                                <span style="color: red;" *ngIf="employeeForm.get('empContactNo')?.hasError('required') && employeeForm.get('empContactNo')?.touched">
+                                    <i>Contact No is required</i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label for="empAltContactNo">Alter Contact No</label>
+                            <input type="text" name="empAltContactNo" id="empAltContactNo" class="form-control" formControlName="empAltContactNo">
+                            <div>
+                                <span style="color: red;" *ngIf="employeeForm.get('empAltContactNo')?.hasError('required') && employeeForm.get('empAltContactNo')?.touched">
+                                    <i>Alter Contact No is required</i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label for="empPersonalEmailId">Personal EmailId</label>
+                            <input type="email" name="empPersonalEmailId" id="empPersonalEmailId" class="form-control" formControlName="empPersonalEmailId">
+                            <div>
+                                <span style="color: red;" *ngIf="employeeForm.get('empPersonalEmailId')?.hasError('required') && employeeForm.get('empPersonalEmailId')?.touched">
+                                    <i>Personal EmailId is required</i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label for="empExpTotalYear">Emp Total Exp</label>
+                            <input type="text" name="empExpTotalYear" id="empExpTotalYear" class="form-control" formControlName="empExpTotalYear">
+                            <div>
+                                <span style="color: red;" *ngIf="employeeForm.get('empExpTotalYear')?.hasError('required') && employeeForm.get('empExpTotalYear')?.touched">
+                                    <i>Emp Total Exp is required</i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label for="empExpTotalMonth">Emp Total Month</label>
+                            <input type="text" name="empExpTotalMonth" id="empExpTotalMonth" class="form-control" formControlName="empExpTotalMonth">
+                            <div>
+                                <span style="color: red;" *ngIf="employeeForm.get('empExpTotalMonth')?.hasError('required') && employeeForm.get('empExpTotalMonth')?.touched">
+                                    <i>Emp Total Month is required</i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label for="empCity">Employee City</label>
+                            <input type="text" name="empCity" id="empCity" class="form-control" formControlName="empCity">
+                            <div>
+                                <span style="color: red;" *ngIf="employeeForm.get('empCity')?.hasError('required') && employeeForm.get('empCity')?.touched">
+                                    <i>Employee City is required</i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label for="empState">Employee State</label>
+                            <input type="text" name="empState" id="empState" class="form-control" formControlName="empState">
+                            <div>
+                                <span style="color: red;" *ngIf="employeeForm.get('empState')?.hasError('required') && employeeForm.get('empState')?.touched">
+                                    <i>Employee State is required</i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label for="empPinCode">Employee PinCode</label>
+                            <input type="text" name="empPinCode" id="empPinCode" class="form-control" formControlName="empPinCode">
+                            <div>
+                                <span style="color: red;" *ngIf="employeeForm.get('empPinCode')?.hasError('required') && employeeForm.get('empPinCode')?.touched">
+                                    <i>Employee PinCode is required</i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label for="empAddress">Employee Address</label>
+                            <textarea type="text" name="empAddress" id="empAddress" class="form-control" formControlName="empAddress"></textarea>
+                            <div>
+                                <span style="color: red;" *ngIf="employeeForm.get('empAddress')?.hasError('required') && employeeForm.get('empAddress')?.touched">
+                                    <i>Employee Address is required</i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label for="empPerCity">Employee Per City</label>
+                            <input type="text" name="empPerCity" id="empPerCity" class="form-control" formControlName="empPerCity">
+                            <div>
+                                <span style="color: red;" *ngIf="employeeForm.get('empPerCity')?.hasError('required') && employeeForm.get('empPerCity')?.touched">
+                                    <i>Employee Per City is required</i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label for="empPerState">Employee Per State</label>
+                            <input type="text" name="empPerState" id="empPerState" class="form-control" formControlName="empPerState">
+                            <div>
+                                <span style="color: red;" *ngIf="employeeForm.get('empPerState')?.hasError('required') && employeeForm.get('empPerState')?.touched">
+                                    <i>Employee Per State is required</i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label for="empPerPinCode">Employee Per PinCode</label>
+                            <input type="text" name="empPerPinCode" id="empPerPinCode" class="form-control" formControlName="empPerPinCode">
+                            <div>
+                                <span style="color: red;" *ngIf="employeeForm.get('empPerPinCode')?.hasError('required') && employeeForm.get('empPerPinCode')?.touched">
+                                    <i>Employee Per State is required</i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label for="empPerAddress">Employee Per Address</label>
+                            <input type="text" name="empPerAddress" id="empPerAddress" class="form-control" formControlName="empPerAddress">
+                            <div>
+                                <span style="color: red;" *ngIf="employeeForm.get('empPerAddress')?.hasError('required') && employeeForm.get('empPerAddress')?.touched">
+                                    <i>Employee Per Address is required</i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="password" class="form-control" formControlName="password">
+                            <div>
+                                <span style="color: red;" *ngIf="employeeForm.get('password')?.hasError('required') && employeeForm.get('password')?.touched">
+                                    <i>Password is required</i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12" *ngIf="currentStep==2">
+                        <div class="card" formArrayName="ErpEmployeeSkills">
+                            <div class="card-body" *ngFor="let emp of ErpEmployeeSkills.controls;let i=index">
+                                <div class="row g-3 align-items-end" [formGroupName]="i">
+                                    <div class="col-md-1">
+                                        <label for="empSkillId">Emp Skill Id</label>
+                                        <input type="number" name="empSkillId" id="empSkillId" class="form-control" formControlName="empSkillId">
+                                        <div>
+                                            <span style="color: red;" *ngIf="emp.get('empSkillId')?.hasError('required') && emp.get('empSkillId')?.touched">
+                                                <i>Emp Skill Id is required</i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="empId">EmpId</label>
+                                        <input type="number" name="empId" id="empId" class="form-control" formControlName="empId">
+                                        <div>
+                                            <span style="color: red;" *ngIf="emp.get('empId')?.hasError('required') && emp.get('empId')?.touched">
+                                                <i>EmpId is required</i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="skill">Skills</label>
+                                        <select name="skill" id="skill" class="form-control" formControlName="skill">
+                                            <option value="">Select</option>
+                                            <option value="1">Java</option>
+                                            <option value="2">Python</option>
+                                            <option value="3">Angular</option>
+                                            <option value="4">React</option>
+                                        </select>
+                                        <div>
+                                            <span style="color: red;" *ngIf="emp.get('skill')?.hasError('required') && emp.get('skill')?.touched">
+                                                <i>Please select Skills</i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="totalYearExp">Total Year of Exp</label>
+                                        <input type="number" name="totalYearExp" id="totalYearExp" class="form-control" formControlName="totalYearExp">
+                                        <div>
+                                            <span style="color: red;" *ngIf="emp.get('totalYearExp')?.hasError('required') && emp.get('totalYearExp')?.touched">
+                                                <i>Total Years of Exp is required</i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="lastVersionUsed">Last Version Used</label>
+                                        <input type="number" name="lastVersionUsed" id="lastVersionUsed"class="form-control" formControlName="lastVersionUsed">
+                                        <div>
+                                            <span style="color: red;" *ngIf="emp.get('lastVersionUsed')?.hasError('required') && emp.get('lastVersionUsed')?.touched">
+                                                <i>Last Version is required</i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 d-flex align-items-center gap-2">
+                                        <button class="btn btn-success" (click)="addEmpSkills()">+</button>
+                                        <button class="btn btn-danger" (click)="removeSkill(i)"[disabled]="i==0?true:false">-</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12" *ngIf="currentStep == 3">
+                        <div class="card" formArrayName="ErmEmpExperiences">
+                            <div class="card-body" *ngFor="let emp of ErmEmpExperiences.controls;let i=index">
+                                <div class="row g-3 align-items-end" [formGroupName]="i"> <!-- Added spacing between inputs -->
+                                    <div class="col-md-1" style="display: none;">
+                                        <label for="empExpId" class="form-label">Emp Exp ID</label>
+                                        <input type="number" [value]="i" name="empExpId" id="empExpId" class="form-control" formControlName="empExpId">
+                                    </div>
+                                    <div class="col-md-1">
+                                        <label for="empId" class="form-label">Emp ID</label>
+                                        <input type="text" name="empId" id="empId" class="form-control" formControlName="empId">
+                                        <div>
+                                            <span style="color: red;" *ngIf="emp.get('empId')?.hasError('required') && emp.get('empId')?.touched">
+                                                <i>EmpId is required</i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="companyName" class="form-label">Company Name</label>
+                                        <input type="text" name="companyName" id="companyName" class="form-control" formControlName="companyName">
+                                        <div>
+                                            <span style="color: red;" *ngIf="emp.get('companyName')?.hasError('required') && emp.get('companyName')?.touched">
+                                                <i>Company Name is required</i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="startDate" class="form-label">Start Date</label>
+                                        <input type="date" name="startDate" id="startDate" class="form-control" formControlName="startDate">
+                                        <div>
+                                            <span style="color: red;" *ngIf="emp.get('startDate')?.hasError('required') && emp.get('startDate')?.touched">
+                                                <i>Start Date is required</i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="endDate" class="form-label">End Date</label>
+                                        <input type="date" name="endDate" id="endDate" class="form-control" formControlName="endDate">
+                                        <div>
+                                            <span style="color: red;" *ngIf="emp.get('endDate')?.hasError('required') && emp.get('endDate')?.touched">
+                                                <i>End Date is required</i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-md-1">
+                                        <label for="designation" class="form-label">Designation</label>
+                                        <select type="text" name="designation" id="designation" class="form-control" formControlName="designation">
+                                            <option value="">Select</option>
+                                            <option *ngFor="let item of designationList" value="{{item.designation}}">{{item.designation}}</option>
+                                        </select>
+                                        <div>
+                                            <span style="color: red;" *ngIf="emp.get('designation')?.hasError('required') && emp.get('designation')?.touched">
+                                                <i>Designation is required</i>
+                                            </span>
+                                        </div>
+                                    </div> -->
+                                    <div class="col-md-2">
+                                        <label for="projectsWorkedOn" class="form-label">No. of Projects Worked on</label>
+                                        <input type="number" name="projectsWorkedOn" id="projectsWorkedOn" class="form-control" formControlName="projectsWorkedOn">
+                                        <div>
+                                            <span style="color: red;" *ngIf="emp.get('projectsWorkedOn')?.hasError('required') && emp.get('projectsWorkedOn')?.touched">
+                                                <i>No. of Projects Worked on is required</i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 d-flex align-items-center gap-2">
+                                        <button class="btn btn-success" (click)="addEmpExp()">+</button>
+                                        <button class="btn btn-danger" (click)="removeExp(i)" [disabled]="i==0?true:false" >-</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-center pt-2">
+                        <button class="btn btn-secondary" style="margin-left: 2px;"[disabled]="currentStep==1?true:false" (click)="previousClick()">Previous</button>
+                        <button class="btn btn-success" style="margin-left: 2px;"[disabled]="currentStep==3?true:false" (click)="nextClick()">Next</button>
+                        <button class="btn btn-success" style="margin-left: 2px;" [disabled]="currentStep!=3?true:false" (click)="submitForm()">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <ng-template #employeeSkills>
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-success">
+                <h2>Employee Skills</h2>
+            </div>
+            <div class="card-body">
+                <form action="">
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="empId">EmpId</label>
+                            <input type="text" name="empId" id="empId" class="form-control">
+                        </div>
+                        <div class="col-3">
+                            <label for="Skills">Skills</label>
+                            <select name="Skills" id="Skills" class="form-control">
+                                <option value="">Select</option>
+                                <option value="1">Java</option>
+                                <option value="2">Python</option>
+                                <option value="3">Angular</option>
+                                <option value="4">React</option>
+                            </select>
+                        </div>
+                        <div class="col-2">
+                            <label for="totalYearExp">Total Year of Exp</label>
+                            <input type="number" name="totalYearExp" id="totalYearExp" class="form-control">
+                        </div>
+                        <div class="col-2">
+                            <label for="lastVersionUsed">Last Version Used</label>
+                            <input type="number" name="lastVersionUsed" id="lastVersionUsed" class="form-control">
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center pt-2">
+                        <button class="btn btn-secondary" style="margin-left: 2px;">Previous</button>
+                        <button class="btn btn-success" style="margin-left: 2px;">Next</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+
+<ng-template #employeeExperience>
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-success">
+                <h2>Employee Experience</h2>
+            </div>
+            <div class="card-body">
+                <form action="">
+                    <div class="row">
+                        <div class="col-1">
+                            <label for="empId">EmpId</label>
+                            <input type="text" name="empId" id="empId" class="form-control">
+                        </div>
+                        <div class="col-2">
+                            <label for="companyName">CompanyName</label>
+                            <input type="text" name="companyName" id="companyName" class="form-control">
+                        </div>
+                        <div class="col-2">
+                            <label for="startDate">Start Date</label>
+                            <input type="date" name="startDate" id="startDate" class="form-control">
+                        </div>
+                        <div class="col-2">
+                            <label for="endDate">End Date</label>
+                            <input type="date" name="endDate" id="endDate" class="form-control">
+                        </div>
+                        <div class="col-2">
+                            <label for="designation">Designations</label>
+                            <input type="designation" name="designation" id="designation" class="form-control">
+                        </div>
+                        <div class="col-2">
+                            <label for="NoOfProjectWorkedOn">No of Projects Worked On</label>
+                            <input type="number" name="NoOfProjectWorkedOn" id="NoOfProjectWorkedOn"
+                                class="form-control">
+                        </div>
+                        <div class="col-1">
+                            <label for="AddEmployeement">Add Exp</label>
+                            <button class="form-control">Add</button>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center pt-2">
+                        <button class="btn btn-secondary" style="margin-left: 2px;">Previous</button>
+                        <button class="btn btn-success" style="margin-left: 2px;">Next</button>
+                    </div>
+                    <div class="d-flex justify-content-center mt-3">
+                        <button class="btn btn-success" style="margin-left: 2px;">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</ng-template> -->

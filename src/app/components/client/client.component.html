@@ -1,0 +1,130 @@
+<!-- {{clientObj|json}}
+<ul>
+@for (item of userList$ |async ; track $index) {
+    <li>{{item.username}}</li>
+}
+</ul> -->
+<!-- <app-alert [alertType]="'Error'" [message]="'List loading Fails'"></app-alert> -->
+<!--
+<div class="row">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header bg-success">
+                <h2>Client List</h2>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Sr No</th>
+                                    <th>Person Name</th>
+                                    <th>Company Name</th>
+                                    <th>Contact No</th>
+                                    <th>City</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of clientList; let index = index">
+                                    <td>{{index+1}}</td>
+                                    <td>{{ item.contactPersonName  }}</td>
+                                    <td>{{ item.companyName | uppercase}}</td>
+                                    <td>{{ item.contactNo }}</td>
+                                    <td>{{ item.city }}</td>
+                                    <td>
+                                        <div class="d-flex justify-content-between">
+                                            <button class="btn btn-primary" (click)="onEdit(item)">Edit</button>
+                                            <button class="btn btn-danger"(click)="onDelete(item.clientId)">Delete</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card">
+            <div class="card-header bg-success">
+                <h2>New Client Form</h2>
+            </div>
+            <div class="card-body">
+                <form #form="ngForm">
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="">Person Name</label>
+                            <input type="text" #personName="ngModel" required minlength="5" name="contactPersonName" [(ngModel)]="clientObj.contactPersonName" class="form-control" />
+                            @if(personName.touched ){
+                                @if(personName?.errors?.['required']){
+                                    <div class="text-danger">
+                                        <span>This is required</span> 
+                                     </div>
+                                }
+                                @if(personName?.errors?.['minlength']){
+                                    <div class="text-danger">
+                                        <span>Minimum 5 chars are required</span> 
+                                     </div>
+                                }
+                            }
+                            
+                        </div>
+                        <div class="col-6">
+                            <label for="">Company Name</label>
+                            <input type="text" [(ngModel)]="clientObj.companyName" name="companyName" class="form-control" />
+                        </div>
+                        <div class="col-6">
+                            <label for="">Contact No</label>
+                            <input type="text" [(ngModel)]="clientObj.contactNo" name="contactNo" class="form-control" />
+                        </div>
+                        <div class="col-6">
+                            <label for="">City</label>
+                            <input type="text" [(ngModel)]="clientObj.city" name="city" class="form-control" />
+                        </div>
+                        <div class="col-6">
+                            <label for="">State</label>
+                            <input type="text" [(ngModel)]="clientObj.state" name="state" class="form-control" />
+                        </div>
+                        <div class="col-6">
+                            <label for="">Pincode</label>
+                            <input type="text" [(ngModel)]="clientObj.pincode" name="pincode" class="form-control" />
+                        </div>
+                        <div class="col-6">
+                            <label for="">Address</label>
+                            <textarea [(ngModel)]="clientObj.address" name="address" class="form-control" ></textarea> 
+                        </div>
+                        <div class="col-6">
+                            <label for="">Employee Strength</label>
+                            <input type="text" [(ngModel)]="clientObj.employeeStrength" name="employeeStrength" class="form-control" />
+                        </div>
+                        <div class="col-6">
+                            <label for="">GST No</label>
+                            <input type="text" [(ngModel)]="clientObj.gstNo" name="gstNo" class="form-control" />
+                        </div>
+                        <div class="col-6">
+                            <label for="">REG No</label>
+                            <input type="text" [(ngModel)]="clientObj.regNo" name="regNo" class="form-control" />
+                        </div>
+                    </div>
+    
+                    <div class="row pt-2">
+                        <div class="col-6 text-center">
+                            <button class="btn btn-secondary" (click)="onReset()">Reset</button>
+                        </div>
+                        <div class="col-6 text-center">
+                            <app-my-button (onBtnClicked)="onSaveClient()" [btnClass]="'btn btn-success'" [btnText]="clientObj.clientId !=0 ? 'Update Client':'Save Client'"></app-my-button>
+                            
+                            //OutPut Event passed the event as $event
+                            // <app-my-button (onBtnClicked)="onSaveClient($event)" [btnClass]="'btn btn-success'" [btnText]="clientObj.clientId !=0 ? 'Update Client':'Save Client'"></app-my-button>
+                            
+                           /// <button class="btn btn-success" [disabled]="!form.valid" (click)="onSaveClient()">{{clientObj.clientId !=0 ? 'Update Client':'Save Client'}}</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div> -->

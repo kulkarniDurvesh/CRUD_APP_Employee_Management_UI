@@ -1,0 +1,44 @@
+
+<div class="col-12">
+    <div class="card">
+        <div class="card-header bg-success">
+            <h2>Employee List</h2>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Sr No</th>
+                                <th>Employee_Id</th>
+                                <th>EmployeeFirstName</th>
+                                <th>EmployeeLastName</th>
+                                <th>EmployeeDesignation</th>
+                                <th>EmployeePhoneNo</th>
+                                <th>EmployeeGrade</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of employeeList; let index = index">
+                                <td>{{index+1}}</td>
+                                <td>{{ item.employeeId  }}</td>
+                                <td>{{ item.employeeFirstName| uppercase}}</td>
+                                <td>{{ item.employeeLastName }}</td>
+                                <td>{{ item.employeeDesignation }}</td>
+                                <td>{{ item.employeePhone }}</td>
+                                <td>{{ item.employeeGrade }}</td>
+                                <!-- <td>
+                                    <div class="d-flex justify-content-between">
+                                        <button class="btn btn-primary" (click)="onEdit(item)">Edit</button>
+                                        <button class="btn btn-danger"(click)="onDelete(item.clientId)">Delete</button>
+                                    </div>
+                                </td> -->
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
